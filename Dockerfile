@@ -16,5 +16,7 @@ RUN mkdir /etc/nagios3
 ADD nagios3 /etc/nagios3
 RUN chown -R nagios.nagios /etc/nagios3
 RUN htpasswd -bc /etc/nagios3/htpasswd.users nagiosadmin password
+ADD .kube /var/lib/nagios/.kube
+RUN chown -R nagios.nagios /var/lib/nagios/.kube
 USER nagios
 CMD supervisord
